@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSitiveRails | Payment Orchestration Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepspace: '#050515',
+                        indigo: '#1700a1',
+                        mint: '#10B981',
+                        silver: '#e2e8f0',
+                    },
+                    fontFamily: {
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050515; color: #e2e8f0; overflow-x: hidden; }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(23, 0, 161, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(23, 0, 161, 0.1) 1px, transparent 1px);
+        }
+        .code-block { background: rgba(0, 0, 0, 0.8); border: 1px solid #1700a1; }
+        .glow-text { text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+        .glass-panel {
+            background: rgba(5, 5, 21, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(23, 0, 161, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased grid-bg min-h-screen flex flex-col relative">
+
+    <!-- Navbar -->
+    <nav class="border-b border-indigo/30 glass-panel sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <!-- POSitiveRails Logo -->
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 80L80 20" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M20 20L80 80" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <rect x="42" y="30" width="16" height="40" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                        <rect x="30" y="42" width="40" height="16" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                    </svg>
+                    <span class="font-bold text-xl tracking-wide text-white">POSitive<span class="text-mint">Rails</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#architecture" class="text-gray-400 hover:text-mint text-sm font-medium transition-colors uppercase tracking-widest">Architecture</a>
+                    <a href="#nmi-integration" class="text-gray-400 hover:text-mint text-sm font-medium transition-colors uppercase tracking-widest">NMI Gateway</a>
+                    <a href="https://omni-pos.io" target="_blank" class="bg-indigo/20 text-mint border border-mint/50 hover:bg-mint hover:text-deepspace px-5 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-widest">View Merchant UI</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-grow flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Hero Text -->
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint/10 border border-mint/30 text-xs font-mono text-mint tracking-widest uppercase">
+                    <span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span>
+                    NMI Switchboard Integration Active
+                </div>
+                <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                    Agnostic Routing.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint to-blue-400">Infinite Scale.</span>
+                </h1>
+                <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
+                    POSitiveRails is the enterprise orchestration layer built natively on top of the NMI switchboard. We evaluate payload risk profiles in milliseconds, bifurcating fiat, digital ledgers, and Level 3 data to dedicated acquiring endpoints.
+                </p>
+            </div>
+
+            <!-- Hero Code / Architecture Visual -->
+            <div class="relative rounded-xl code-block p-6 shadow-2xl border border-indigo/50">
+                <div class="flex gap-2 mb-4 border-b border-indigo/30 pb-4 items-center justify-between">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">nmi_payload_router.js</span>
+                </div>
+                
+                <pre class="font-mono text-xs sm:text-sm text-gray-300 overflow-x-auto leading-loose">
+<span class="text-pink-400">const</span> <span class="text-blue-400">transactionPayload</span> = {
+  <span class="text-green-300">"amount"</span>: <span class="text-orange-300">45000.00</span>,
+  <span class="text-green-300">"mcc_code"</span>: <span class="text-orange-300">"4214"</span>, <span class="text-gray-500">// Commercial Freight</span>
+  <span class="text-green-300">"data_level"</span>: <span class="text-orange-300">3</span>
+};
+
+<span class="text-gray-500">// POSitiveRails NMI Switchboard Evaluation</span>
+<span class="text-pink-400">if</span> (transactionPayload.data_level === <span class="text-orange-300">3</span>) {
+  <span class="text-blue-400">NMIGateway</span>.routeTo({
+    <span class="text-green-300">acquirer_endpoint</span>: <span class="text-yellow-300">"Priority_B2B_Rail"</span>,
+    <span class="text-green-300">action</span>: <span class="text-yellow-300">"inject_L3_line_items"</span>,
+    <span class="text-green-300">security</span>: <span class="text-yellow-300">"PCI_DSS_L1_Tokenized"</span>,
+    <span class="text-green-300">status</span>: <span class="text-mint glow-text">"200_OK_OPTIMIZED"</span>
+  });
+}
+                </pre>
+            </div>
+        </div>
+    </main>
+
+    <!-- NMI Integration Section (Specifically for your call tomorrow) -->
+    <section id="nmi-integration" class="border-t border-indigo/30 bg-black/60 py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-4">Core Infrastructure</h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">Powered by the NMI Gateway</h3>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    We do not believe in rebuilding the wheel. POSitiveRails acts as the proprietary "brain" interpreting merchant data, while relying on the absolute stability, uptime, and Level 1 PCI-DSS security of the Network Merchants Inc. (NMI) framework to execute the transaction.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-mint/50 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-3">Omnichannel Capability</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">By utilizing NMI's robust device APIs and ATRI routing, we offer our merchants a unified environment—syncing physical smart terminals, mobile swipers, and global eCommerce checkouts into a single ledger.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-mint/50 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-3">Multi-Acquirer Agility</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">We leverage NMI's gateway to push distinct payload types to specialized acquirers. High-ticket logistics goes to Priority, retail surcharging goes to PayRoc, and digital assets route via alternative APMs.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-xl hover:border-mint/50 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-3">Zero Data Liability</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">POSitiveRails operates exclusively on the Data Layer. Raw card data is tokenized immediately via NMI's P2PE hardware integration, completely removing NDPS and our merchants from the PCI scope.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-indigo/30 bg-deepspace py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-600 text-xs font-mono uppercase tracking-widest">© 2026 NDPS LLC. POSitiveRails is a proprietary orchestration framework.</p>
+            <div class="flex gap-6 text-xs text-gray-500 uppercase tracking-widest font-bold">
+                <a href="https://omni-pos.io" target="_blank" class="hover:text-mint transition-colors">OmniPOS Platform</a>
+                <span class="text-indigo-800">|</span>
+                <span class="text-gray-500">System Status: Optimal</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
