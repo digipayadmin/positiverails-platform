@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Freight & Logistics | OmniPOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkblue: '#00001a',
+                        twilight: '#00167a',
+                        indigo: '#1700a1',
+                        gold: '#E1AD3D',
+                        mint: '#10B981',
+                        silver: '#e2e8f0',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Space Mono', 'monospace'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #00001a; color: white; overflow-x: hidden; }
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(225, 173, 61, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(23, 0, 161, 0.2) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(0, 22, 122, 0.2);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(225, 173, 61, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-mesh min-h-screen flex flex-col">
+
+    <nav class="fixed w-full z-50 glass-panel border-b border-indigo/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="../index.html" class="flex items-center gap-3 cursor-pointer group">
+                    <svg class="w-10 h-10 transition-transform group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="#10B981" stroke-width="6" stroke-dasharray="15 5"/>
+                        <path d="M50 25L71.6506 37.5V62.5L50 75L28.3494 62.5V37.5L50 25Z" fill="rgba(225, 173, 61, 0.2)" stroke="#E1AD3D" stroke-width="3"/>
+                        <circle cx="50" cy="50" r="8" fill="#10B981"/>
+                    </svg>
+                    <span class="font-bold text-2xl tracking-tight text-white">Omni<span class="text-gold">POS</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                    <a href="../index.html" class="text-silver hover:text-mint transition-colors">Home</a>
+                    <a href="b2b-freight.html" class="text-gold underline decoration-2 underline-offset-8">B2B Rail</a>
+                    <a href="retail-surcharge.html" class="text-silver hover:text-mint transition-colors">Retail Rail</a>
+                    <a href="global-crypto.html" class="text-silver hover:text-mint transition-colors">Global Rail</a>
+                    <a href="../login.html" class="bg-mint text-darkblue px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-400 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)]">Merchant Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-grow w-full">
+        
+        <div class="text-center max-w-4xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-xs font-mono text-gold border border-gold/40 mb-6">
+                <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span> Priority B2B Infrastructure
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Automated <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Level 3</span> Routing.
+            </h1>
+            <p class="text-xl text-gray-400 leading-relaxed">
+                Logistics companies and commercial brokers bleed margin on corporate credit cards. OmniPOS stops the leak by automating Level 2 and Level 3 data injection, securing the absolute lowest interchange rates permitted by Visa and Mastercard.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="bg-black/40 border border-indigo/30 p-8 rounded-2xl hover:border-gold/50 transition-all">
+                <h3 class="text-2xl font-bold text-white mb-4">The "Downgrade" Trap</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">When a client pays a $50,000 freight invoice with a corporate card via a standard terminal, Visa penalizes the transaction for lacking commercial data, resulting in a 3.5%+ "downgrade" rate.</p>
+            </div>
+            <div class="bg-black/40 border border-indigo/30 p-8 rounded-2xl hover:border-gold/50 transition-all">
+                <h3 class="text-2xl font-bold text-white mb-4">The NMI Solution</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">OmniPOS intercepts the payload via the POSitiveRails engine. We automatically inject missing Level 3 data (Tax ID, Freight Amount, PO Number) before the transaction reaches the acquiring bank.</p>
+            </div>
+            <div class="bg-indigo/20 border border-gold/40 p-8 rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-20"><svg class="w-20 h-20 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
+                <h3 class="text-2xl font-bold text-gold mb-4 relative z-10">Margin Recovery</h3>
+                <p class="text-gray-200 text-sm leading-relaxed relative z-10">By providing the card networks with enhanced data, the transaction instantly qualifies for commercial interchange rates—dropping from 3.5% to as low as 1.9%. We recover that spread directly to your bottom line.</p>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center">
+            <a href="../index.html#audit" class="inline-flex items-center gap-3 bg-mint text-darkblue px-8 py-4 rounded-xl font-bold hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                Initiate a Capital Recovery Audit
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-indigo/30 bg-darkblue py-8 mt-auto text-center">
+        <p class="text-gray-600 text-xs">© 2026 NDPS LLC. POSitiveRails and OmniPOS are proprietary technologies.</p>
+    </footer>
+</body>
+</html>
