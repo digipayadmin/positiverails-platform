@@ -39,11 +39,11 @@
                 classDef crypto fill:#d97706,stroke:#78350f,stroke-width:2px,color:#fff,rx:8px,ry:8px;
 
                 %% Nodes
-                Client("💻 OmniPOS Frontend<br/><span style='font-size:12px;color:#93c5fd'>React Web / Hardware Terminals</span>"):::frontend
+                Client("💻 OmniPOS Frontend<br/><span style='font-size:12px;color:#93c5fd'>Secure Web / Hardware Terminals</span>"):::frontend
                 
-                subgraph Google Cloud Platform
-                    Vault{"🛡️ POSitiveRails Switchboard<br/><span style='font-size:12px;color:#6ee7b7'>Node.js API Vault (Bifurcation Logic)</span>"}:::backend
-                    DB[("🗄️ Firestore Ledger<br/><span style='font-size:12px;color:#fdba74'>Immutable & PCI-Scrubbed</span>")]:::db
+                subgraph Enterprise Cloud Infrastructure
+                    Vault{"🛡️ POSitiveRails Switchboard<br/><span style='font-size:12px;color:#6ee7b7'>Proprietary API Vault (Bifurcation Logic)</span>"}:::backend
+                    DB[("🗄️ Secure Database<br/><span style='font-size:12px;color:#fdba74'>Immutable & PCI-Scrubbed</span>")]:::db
                 end
 
                 subgraph Credit Card Gateways
@@ -89,7 +89,7 @@
             <div class="bg-slate-800 p-5 rounded-lg border border-slate-700">
                 <h3 class="text-xl font-semibold mb-3 text-emerald-400">2. Bifurcation (POSitiveRails)</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    This is the "Brain". Google Cloud analyzes the transaction flag (e.g., B2B, Crypto, Retail) and routes the API call down the single most profitable and efficient pipe. It acts as an absolute firewall between the public internet and the payment processors.
+                    This is the "Brain". The orchestration engine analyzes the transaction flag (e.g., B2B, Crypto, Retail) and routes the API call down the single most profitable and efficient pipe. It acts as an absolute firewall between the public internet and the payment processors.
                 </p>
             </div>
             <div class="bg-slate-800 p-5 rounded-lg border border-slate-700">
@@ -101,7 +101,7 @@
             <div class="bg-slate-800 p-5 rounded-lg border border-slate-700">
                 <h3 class="text-xl font-semibold mb-3 text-orange-400">4. The Immutable Ledger</h3>
                 <p class="text-slate-300 text-sm leading-relaxed">
-                    Firestore acts as the paper trail. Toxic data (full CC numbers, PII) is stripped away. Only the exact server timestamp, the routing rail used, the transaction ID, and the status are permanently written to the database for auditing and dashboard analytics.
+                    A proprietary secure database acts as the paper trail. Toxic data (full CC numbers, PII) is stripped away. Only the exact server timestamp, the routing rail used, the transaction ID, and the status are permanently written to the database for auditing and dashboard analytics.
                 </p>
             </div>
         </div>
