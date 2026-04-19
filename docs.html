@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference | POSitiveRails Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepspace: '#050515',
+                        indigo: '#1700a1',
+                        mint: '#10B981',
+                        silver: '#e2e8f0',
+                    },
+                    fontFamily: {
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050515; color: #e2e8f0; }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(23, 0, 161, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(23, 0, 161, 0.05) 1px, transparent 1px);
+        }
+        .code-block { background: #000000; border: 1px solid rgba(23, 0, 161, 0.4); }
+        .glass-panel { background: rgba(5, 5, 21, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(23, 0, 161, 0.3); }
+        /* Custom Scrollbar for Code Blocks */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #050515; }
+        ::-webkit-scrollbar-thumb { background: #1700a1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+    </style>
+</head>
+<body class="font-sans antialiased grid-bg min-h-screen flex flex-col">
+
+    <nav class="sticky top-0 z-50 glass-panel">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-3">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 80L80 20" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M20 20L80 80" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <rect x="42" y="30" width="16" height="40" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                        <rect x="30" y="42" width="40" height="16" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                    </svg>
+                    <span class="font-bold text-lg tracking-wide text-white">POSitive<span class="text-mint">Rails</span> <span class="text-xs font-mono text-gray-500 uppercase ml-2">Docs v2.1</span></span>
+                </a>
+                <div class="flex items-center space-x-6 text-sm font-mono uppercase tracking-widest">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Overview</a>
+                    <a href="#" class="text-mint border-b-2 border-mint pb-1">API Reference</a>
+                    <span class="px-3 py-1 bg-indigo/20 border border-indigo/50 text-indigo-300 rounded text-xs">Sandbox Mode</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex-1 max-w-screen-2xl mx-auto w-full flex overflow-hidden">
+        
+        <aside class="w-64 border-r border-indigo/20 hidden lg:block overflow-y-auto pt-8 pr-6 pb-20">
+            <div class="space-y-8">
+                <div>
+                    <h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3">Core</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#authentication" class="text-gray-300 hover:text-mint transition-colors">Authentication</a></li>
+                        <li><a href="#idempotency" class="text-gray-300 hover:text-mint transition-colors">Idempotency</a></li>
+                        <li><a href="#errors" class="text-gray-300 hover:text-mint transition-colors">Error Handling</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3">Orchestration API</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#create-charge" class="text-mint font-medium flex items-center justify-between">Create Charge <span class="text-[10px] bg-indigo/30 text-indigo-300 px-1.5 py-0.5 rounded">POST</span></a></li>
+                        <li><a href="#tokenize" class="text-gray-300 hover:text-mint transition-colors flex items-center justify-between">Tokenize Card <span class="text-[10px] bg-indigo/30 text-indigo-300 px-1.5 py-0.5 rounded">POST</span></a></li>
+                        <li><a href="#refund" class="text-gray-300 hover:text-mint transition-colors flex items-center justify-between">Refund <span class="text-[10px] bg-indigo/30 text-indigo-300 px-1.5 py-0.5 rounded">POST</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3">Webhooks</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-mint transition-colors">Events Overview</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-mint transition-colors">Signatures</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto pt-8 pb-24 px-4 lg:px-12">
+            
+            <section id="authentication" class="mb-16">
+                <h1 class="text-3xl font-bold text-white mb-4">Authentication</h1>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    The POSitiveRails API uses API keys to authenticate requests. You can view and manage your keys in the OmniPOS Developer Dashboard. 
+                    Your API keys carry many privileges, so be sure to keep them secure.
+                </p>
+                <div class="code-block rounded-lg p-4 font-mono text-sm text-gray-300 mb-6">
+                    <span class="text-gray-500"># Authenticate via Bearer Token</span><br>
+                    <span class="text-blue-400">Authorization:</span> Bearer sk_live_POS...
+                </div>
+                <div class="p-4 bg-indigo/10 border border-indigo/30 rounded-lg text-sm text-indigo-200 flex gap-3">
+                    <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>All API requests must be made over <strong class="text-white">HTTPS</strong>. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
+                </div>
+            </section>
+
+            <hr class="border-indigo/20 mb-16">
+
+            <section id="create-charge" class="mb-16 grid grid-cols-1 xl:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Create a Charge (Dynamic Route)</h2>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        This is the core orchestration endpoint. Submit a payment payload, and the ATRI engine will automatically evaluate the `mcc_code` and `amount` to route the transaction to the optimal acquiring rail (e.g., Priority for B2B L3, PayRoc for Retail).
+                    </p>
+                    
+                    <h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3 border-b border-indigo/20 pb-2">Endpoint</h4>
+                    <div class="font-mono text-sm bg-black/50 border border-indigo/30 p-3 rounded text-mint mb-8">
+                        POST https://api.positiverails.com/v1/route/charge
+                    </div>
+
+                    <h4 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-3 border-b border-indigo/20 pb-2">Body Parameters</h4>
+                    <ul class="space-y-4">
+                        <li class="border-b border-indigo/10 pb-4">
+                            <div class="flex items-center gap-2 mb-1">
+                                <code class="text-mint font-bold text-sm">amount</code>
+                                <span class="text-xs text-gray-500 font-mono">integer</span>
+                                <span class="text-[10px] bg-red-900/30 text-red-400 px-1.5 py-0.5 rounded border border-red-500/20">REQUIRED</span>
+                            </div>
+                            <p class="text-sm text-gray-400">Amount intended to be collected by this payment. A positive integer representing how much to charge in the smallest currency unit (e.g., 100 cents to charge $1.00).</p>
+                        </li>
+                        <li class="border-b border-indigo/10 pb-4">
+                            <div class="flex items-center gap-2 mb-1">
+                                <code class="text-mint font-bold text-sm">currency</code>
+                                <span class="text-xs text-gray-500 font-mono">string</span>
+                                <span class="text-[10px] bg-red-900/30 text-red-400 px-1.5 py-0.5 rounded border border-red-500/20">REQUIRED</span>
+                            </div>
+                            <p class="text-sm text-gray-400">Three-letter ISO currency code, in lowercase. Must be a supported currency (currently `usd`).</p>
+                        </li>
+                        <li class="border-b border-indigo/10 pb-4">
+                            <div class="flex items-center gap-2 mb-1">
+                                <code class="text-blue-400 font-bold text-sm">l3_data</code>
+                                <span class="text-xs text-gray-500 font-mono">object</span>
+                                <span class="text-[10px] bg-indigo/30 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo/50">OPTIONAL</span>
+                            </div>
+                            <p class="text-sm text-gray-400">If provided, the POSitiveRails engine will force-route to a commercial acquiring BIN (Priority) and inject the nested line items for interchange optimization.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <div class="text-[10px] font-mono text-gray-500 uppercase tracking-widest bg-black border-t border-l border-r border-indigo/40 rounded-t-lg px-4 py-2 inline-block">Request (cURL)</div>
+                        <div class="code-block rounded-lg rounded-tl-none p-5 font-mono text-xs text-gray-300 overflow-x-auto shadow-2xl">
+<pre>
+curl -X POST https://api.positiverails.com/v1/route/charge \
+  -H "Authorization: Bearer sk_live_POS_8xj29..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    <span class="text-green-300">"amount"</span>: <span class="text-orange-300">4500000</span>, <span class="text-gray-500">// $45,000.00</span>
+    <span class="text-green-300">"currency"</span>: <span class="text-yellow-300">"usd"</span>,
+    <span class="text-green-300">"source"</span>: <span class="text-yellow-300">"tok_1NmK..."</span>,
+    <span class="text-green-300">"l3_data"</span>: {
+      <span class="text-green-300">"po_number"</span>: <span class="text-yellow-300">"FRT-992-881"</span>,
+      <span class="text-green-300">"tax_amount"</span>: <span class="text-orange-300">0</span>
+    }
+  }'
+</pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-[10px] font-mono text-gray-500 uppercase tracking-widest bg-black border-t border-l border-r border-indigo/40 rounded-t-lg px-4 py-2 inline-block">Response (JSON)</div>
+                        <div class="code-block rounded-lg rounded-tl-none p-5 font-mono text-xs text-gray-300 overflow-x-auto shadow-2xl">
+<pre>
+{
+  <span class="text-green-300">"id"</span>: <span class="text-yellow-300">"ch_1Oxa22L..."</span>,
+  <span class="text-green-300">"object"</span>: <span class="text-yellow-300">"charge"</span>,
+  <span class="text-green-300">"amount"</span>: <span class="text-orange-300">4500000</span>,
+  <span class="text-green-300">"status"</span>: <span class="text-mint glow-text">"succeeded"</span>,
+  <span class="text-blue-400">"orchestration_meta"</span>: {
+    <span class="text-green-300">"routed_rail"</span>: <span class="text-yellow-300">"Priority_Commercial"</span>,
+    <span class="text-green-300">"l3_injected"</span>: <span class="text-pink-400">true</span>,
+    <span class="text-green-300">"est_interchange_savings"</span>: <span class="text-orange-300">675.00</span>,
+    <span class="text-green-300">"nmi_switch_latency_ms"</span>: <span class="text-orange-300">142</span>
+  }
+}
+</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

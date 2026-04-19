@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security & Compliance | POSitiveRails Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepspace: '#050515',
+                        indigo: '#1700a1',
+                        mint: '#10B981',
+                        silver: '#e2e8f0',
+                        gold: '#E1AD3D',
+                    },
+                    fontFamily: {
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050515; color: #e2e8f0; overflow-x: hidden; }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(23, 0, 161, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(23, 0, 161, 0.05) 1px, transparent 1px);
+        }
+        .glass-panel { 
+            background: rgba(5, 5, 21, 0.8); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(23, 0, 161, 0.3); 
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased grid-bg min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-panel border-b-0 border-indigo/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 border-b border-indigo/30">
+                <a href="index.html" class="flex items-center gap-3">
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 80L80 20" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M20 20L80 80" stroke="#1700a1" stroke-width="8" stroke-linecap="round"/>
+                        <rect x="42" y="30" width="16" height="40" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                        <rect x="30" y="42" width="40" height="16" rx="2" fill="#10B981" transform="rotate(45 50 50)"/>
+                    </svg>
+                    <span class="font-bold text-lg tracking-wide text-white">POSitive<span class="text-mint">Rails</span></span>
+                </a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="docs.html" class="text-gray-300 hover:text-mint px-3 py-2 rounded-md text-sm font-medium transition-colors">Architecture</a>
+                        <a href="index.html#nmi-integration" class="text-gray-300 hover:text-mint px-3 py-2 rounded-md text-sm font-medium transition-colors">NMI Integration</a>
+                        <a href="security.html" class="text-mint border-b-2 border-mint px-3 py-2 text-sm font-medium">Compliance</a>
+                        <a href="docs.html" class="bg-indigo/20 text-mint border border-mint/50 hover:bg-mint hover:text-deepspace px-4 py-2 rounded-md text-sm font-bold transition-all">Developer Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-16 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint/10 border border-mint/30 text-xs font-mono text-mint tracking-widest uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span>
+                Auditor & Underwriting Ready
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+                Enterprise Security &<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint to-blue-400">Risk Insulation.</span>
+            </h1>
+            <p class="text-lg text-gray-400 leading-relaxed">
+                POSitiveRails eliminates aggregator liability. By operating strictly on the Data Layer, we ensure that raw card data and cross-border digital assets are structurally isolated, keeping our acquiring partners perfectly insulated from compliance risks.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-16">
+            
+            <!-- Core Compliance Pillars -->
+            <div class="space-y-6">
+                <!-- PCI-DSS -->
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-mint/50 transition-all glow-border">
+                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <svg class="w-32 h-32 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">PCI-DSS Level 1 Infrastructure</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed relative z-10 mb-4">
+                        We mandate Point-to-Point Encryption (P2PE) across all OmniPOS edge devices. Raw Primary Account Numbers (PANs) are encrypted at the moment of swipe/dip and tokenized immediately by the NMI gateway. POSitiveRails routes tokens, never raw data.
+                    </p>
+                    <div class="text-[10px] font-mono text-mint uppercase tracking-widest bg-mint/10 inline-block px-2 py-1 rounded">Scope Reduction: 100%</div>
+                </div>
+
+                <!-- AML & Crypto Risk Insulation -->
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-blue-400/50 transition-all glow-border">
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">Digital Asset (Web3) Insulation</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed relative z-10 mb-4">
+                        Traditional fiat acquirers (Priority, PayRoc) strictly prohibit unverified cryptocurrency volume. Our routing logic identifies digital asset payloads at the terminal level and bifurcates them directly to Nuvei/Simplex. Standard acquirers never touch or see a crypto transaction on their ledger.
+                    </p>
+                    <div class="text-[10px] font-mono text-blue-400 uppercase tracking-widest bg-blue-400/10 inline-block px-2 py-1 rounded">AML / KYC Firewalled</div>
+                </div>
+
+                <!-- Durbin Amendment Compliance -->
+                <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-gold/50 transition-all glow-border">
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">Durbin Amendment Surcharging</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed relative z-10 mb-4">
+                        For our retail clients utilizing the POSitiveRails surcharge logic, our terminal firmware automatically detects the BIN (Bank Identification Number) of the presented card. If a debit card is detected, the surcharge fee is instantly suppressed to ensure absolute compliance with federal law and Visa/MC operating rules.
+                    </p>
+                    <div class="text-[10px] font-mono text-gold uppercase tracking-widest bg-gold/10 inline-block px-2 py-1 rounded">RewardPay™ Indemnified</div>
+                </div>
+            </div>
+
+            <!-- Visual Flowchart -->
+            <div class="glass-panel p-8 rounded-xl border-indigo/40 relative flex flex-col justify-center items-center">
+                <h4 class="font-mono text-xs text-gray-500 mb-8 uppercase tracking-widest text-center">Data Layer Separation Model</h4>
+                
+                <div class="w-full max-w-sm space-y-4">
+                    <!-- Layer 1 -->
+                    <div class="p-4 bg-black/60 border border-indigo/50 rounded-lg text-center relative z-10">
+                        <p class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Capture Layer</p>
+                        <p class="text-sm font-bold text-white">OmniPOS Smart Terminal</p>
+                        <p class="text-[10px] text-mint mt-1">P2PE Hardware Encryption</p>
+                    </div>
+                    
+                    <div class="flex justify-center -my-2 relative z-0">
+                        <div class="w-px h-8 bg-indigo"></div>
+                    </div>
+
+                    <!-- Layer 2 -->
+                    <div class="p-4 bg-indigo/20 border border-indigo rounded-lg text-center relative z-10 shadow-[0_0_15px_rgba(23,0,161,0.5)]">
+                        <p class="text-xs font-mono text-indigo-300 uppercase tracking-widest mb-1">Orchestration Layer</p>
+                        <p class="text-sm font-bold text-white">POSitiveRails Engine</p>
+                        <p class="text-[10px] text-gray-400 mt-1">(Tokenized Routing Logic)</p>
+                    </div>
+
+                    <div class="flex justify-between px-12 -my-2 relative z-0">
+                        <div class="w-px h-8 bg-gold transform -rotate-[30deg]"></div>
+                        <div class="w-px h-8 bg-blue-500 transform rotate-[30deg]"></div>
+                    </div>
+
+                    <!-- Layer 3 -->
+                    <div class="flex gap-4 relative z-10">
+                        <div class="flex-1 p-4 bg-black/60 border border-gold/40 rounded-lg text-center">
+                            <p class="text-[10px] font-mono text-gold uppercase tracking-widest mb-1">Fiat Rail</p>
+                            <p class="text-xs font-bold text-white">Priority / PayRoc</p>
+                            <p class="text-[9px] text-gray-500 mt-1">TSYS / Fiserv Settled</p>
+                        </div>
+                        <div class="flex-1 p-4 bg-black/60 border border-blue-500/40 rounded-lg text-center">
+                            <p class="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">Web3 Rail</p>
+                            <p class="text-xs font-bold text-white">Nuvei / BitPay</p>
+                            <p class="text-[9px] text-gray-500 mt-1">Simplex Settled</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-indigo/30 bg-deepspace py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-600 text-xs font-mono uppercase tracking-widest">© 2026 NDPS LLC. POSitiveRails is a proprietary orchestration framework.</p>
+            <div class="flex gap-6 text-xs text-gray-500 uppercase tracking-widest font-bold">
+                <a href="https://omni-pos.io" target="_blank" class="hover:text-mint transition-colors">OmniPOS Platform</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
