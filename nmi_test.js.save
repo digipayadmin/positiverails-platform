@@ -1,0 +1,5 @@
+cd ~/Desktop
+mkdir omnirails-backend
+cd omnirails-backend
+nano nmi_test.js
+       
